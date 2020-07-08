@@ -50,6 +50,13 @@ bars.get('/edit/:id', (req, res) => {
     })
 })
 
+//Update route
+bars.put('/:id', (req, res) => {
+    chicagoBars.findByIdAndUpdate(req.params.id, req.body, {new: true, useFindAndModify: false}, (error, editedBar) => {
+        res.redirect('/bars/' + req.params.id)
+    })
+})
+
 // delete bar route
 bars.delete('/:id', (req, res) => {
     chicagoBars.findByIdAndDelete(req.params.id, (err, data) => {

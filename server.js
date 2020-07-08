@@ -24,7 +24,7 @@ db.on('open' , ()=>{});
 //___________________
 
 //use public folder for static assets
-app.use(express.static('public'));
+app.use(express.static('Public'));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(methodOverride('_method'));
@@ -32,7 +32,7 @@ const barController = require('./controller/barsController.js');
 app.use('/bars', barController)
 
 app.get('/', (req, res) => {
-    res.send("connected")
+    res.redirect('/bars')
 })
 
 //___________________

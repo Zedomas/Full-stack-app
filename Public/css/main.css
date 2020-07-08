@@ -1,0 +1,23 @@
+body {
+    background-image: url('https://i.pinimg.com/originals/d3/06/58/d306580320b0c105e0e394cb1f4ef92a.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.wrapper {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.barcontainer {
+    width: 350px;
+    height: 3525x;
+    background-color: grey;
+    margin: 3vh;
+
+}
+.barImage {
+    width: 350px;
+    height: 250px;
+}
