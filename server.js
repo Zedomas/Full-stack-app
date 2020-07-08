@@ -50,6 +50,9 @@ app.use('/users', users)
 const sessionController = require('./controller/sessions.js');
 app.use('/sessions', sessionController);
 
+app.use('/', (req, res) => {
+    res.redirect('/bars')
+})
 
 //___________________
 //Listener
