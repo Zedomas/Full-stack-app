@@ -6,11 +6,22 @@
     <title>Best Chicago Bars</title>
 </head>
 <body>
-    <h1>Chicago bar finder</h1>
     <nav> Log in  Sign up <a href="bars/new">New Bar</a></nav>
-    <% for (let i = 0; i < Bars.length; i++) { %>
-        <p><%= Bars[i].name %></p>
+    <h1>Chicago bar finder</h1>
     
-    <% } %>
+
+    <div class="wrapper">
+        <% for (let i = 0; i < Bars.length; i++) { %>
+        <div class="barcontainer">
+            <div class="title">
+                <a href="/bars/<%=Bars[i].id%>"><%= Bars[i].name %></a>   
+            </div>
+            <div class="barImage">
+                <a href="/bars/<%=Bars[i].id%>"><img src="<%= Bars[i].img %>"></img></a>
+            </div> 
+            <p class="location"><%=Bars[i].location%></p>
+        </div>
+        <% } %>
+    </div>
 </body>
 </html>

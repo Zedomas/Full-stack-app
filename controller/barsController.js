@@ -44,8 +44,16 @@ bars.get('/:id', (req, res) => {
 bars.get('/edit/:id', (req, res) => {
     chicagoBars.findById(req.params.id, (err, bar) => {
         res.render('edit.ejs', {
-            bar
+            bar,
+            neighborhoods
         })
+    })
+})
+
+// delete bar route
+bars.delete('/:id', (req, res) => {
+    chicagoBars.findByIdAndDelete(req.params.id, (err, data) => {
+        res.redirect('/bars')
     })
 })
 

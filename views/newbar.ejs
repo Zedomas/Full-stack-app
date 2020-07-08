@@ -13,7 +13,7 @@
         Description: <textarea id="description" name='description'></textarea><br>
         Img URL: <input type="text" name="img" /><br/>
         Specials: <textarea id="specials" name='specials'></textarea><br>
-        Location: <select id="location" name="location" >
+        Location: <select required id="location" name="location" >
             <% for (let i = 0; i < neighborhoods.length; i++) { %>
                <option value="<%=neighborhoods[i]%>"> <%=neighborhoods[i]%> </option> 
         <% } %>            

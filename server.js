@@ -31,7 +31,9 @@ app.use(methodOverride('_method'));
 const barController = require('./controller/barsController.js');
 app.use('/bars', barController)
 
-
+app.get('/', (req, res) => {
+    res.send("connected")
+})
 
 //___________________
 //Listener

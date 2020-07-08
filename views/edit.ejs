@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%=bar.name%></title>
+</head>
+<body>
+    <a href="/bars">Back</a>
+    <a href="/bars/edit/<%=bar.id%>">Edit</a>
+    <div class=container>
+        <form action="/bars/<%=bar.id%>?_method=PUT" method="Post">
+        <h1><input type="text" value="<%=bar.name%>" name="name"></h1>
+        <h3><select id="location" name="location" >
+            <% for (let i = 0; i < neighborhoods.length; i++) {
+                if (bar.location == neighborhoods[i]) { %>
+                    <option selected value="<%=neighborhoods[i]%>"> <%=neighborhoods[i]%> </option> 
+                <% } else { %>
+                    <option value="<%=neighborhoods[i]%>"> <%=neighborhoods[i]%> </option> 
+            <% } %> 
+               
+        <% } %>            
+        </select></h3>
+        <img src="<%=bar.img%>">
+        <label for="img">Image URL</label>
+        <input name="img" id="img" type="url" value="<%=bar.img%>">
+        <div class="description">
+             <h4>Description</h4>
+             <textarea id="description" name='description' ><%=bar.description %></textarea>
+        </div>
+        <div class="Specials">
+            <h3>Specials</h3>
+            <textarea id="specials" name='specials'><%= bar.specials %></textarea>
+        </div>
+          
+        </form>
+    </div>
+
+    <footer>
+        <form action="/bars/<%=bar.id%>?_method=DELETE" method="POST">
+            <input type="submit" value ="Delete" name="delete">
+        </form>
+    </footer>
+</body>
+</html>
