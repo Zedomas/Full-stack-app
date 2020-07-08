@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/main.css">
+    <title>New Bar</title>
+</head>
+<body>
+    <h1>Add a new bar</h1>
+    <form action="/bars" method="POST">
+        Name: <input type="text" name="name" /><br/>
+        Description: <textarea id="description" name='description'></textarea><br>
+        Img URL: <input type="text" name="img" /><br/>
+        Specials: <textarea id="specials" name='specials'></textarea><br>
+        Location: <select id="location" name="location" >
+            <% for (let i = 0; i < neighborhoods.length; i++) { %>
+               <option value="<%=neighborhoods[i]%>"> <%=neighborhoods[i]%> </option> 
+        <% } %>            
+        </select><br/>
+        Type of Bar: <select id="barType" name="barType" >
+               <option value="Dive">Dive</option>
+               <option value="Nightclub">Nightclub</option>  
+               <option value="Pub">Pub</option>
+               <option value="Sports">Sports</option>
+               <option value="College">College</option>
+               <option value="Jazz">Jazz</option>
+               <option value="Pub">Pub</option>
+               <option value="Other">Other</option>          
+        </select><br/>
+        <input type="submit" name="" value="Submit"/>
+    </form>
+</body>
+</html>

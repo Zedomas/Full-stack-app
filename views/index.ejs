@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Best Chicago Bars</title>
+</head>
+<body>
+    <h1>Chicago bar finder</h1>
+    <nav> Log in  Sign up <a href="bars/new">New Bar</a></nav>
+    <% for (let i = 0; i < Bars.length; i++) { %>
+        <p><%= Bars[i].name %></p>
+    
+    <% } %>
+</body>
+</html>
