@@ -2,6 +2,7 @@ const express = require('express');
 const methodOverride  = require('method-override');
 const mongoose = require ('mongoose');
 const app = express();
+require('dotenv').config();
 const db = mongoose.connection;
 const PORT = process.env.PORT || 3000;
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/'+`chicagoBars`;
@@ -31,9 +32,7 @@ app.use(methodOverride('_method'));
 const barController = require('./controller/barsController.js');
 app.use('/bars', barController)
 
-app.get('/', (req, res) => {
-    res.redirect('/bars')
-})
+
 
 //___________________
 //Listener
