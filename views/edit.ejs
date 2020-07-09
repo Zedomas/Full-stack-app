@@ -8,12 +8,14 @@
     
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <%- include('./partials/nav.ejs') %>
-            <li class="nav-item">
-                <a class="nav-link" href="/bars/<%=bar.id%>">Back</a>
-              </li>
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/bars">Back</a>
+                </li>
+                <form  action="/bars/<%=bar.id%>?_method=PUT" method="POST">
+                    <input type="submit" value="Update" class="remove_button_css nav-link" />
+                
             </ul>
-        <form action="/bars/<%=bar.id%>?_method=PUT" method="Post">
-            <input type="submit" name="" value="Update"/>
             </div>
         </nav>
 

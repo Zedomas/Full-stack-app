@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('./partials/head.ejs') %>
+    
+    <title>Best Chicago Bars</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <%- include('./partials/nav.ejs') %>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search Feature TBD" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+    </div>
+  </nav>
+   
+    
+    <h1 class="toppicks">Results</h1>
+    <div class="wrapper">
+        <% for (let i = 0; i < Bars.length; i++) { %>
+        <div class="barcontainer">
+            <div class="title">
+                <a class="bartitle" href="/bars/<%=Bars[i].id%>"><h3><%= Bars[i].name %></h3></a>   
+            </div>
+                <a href="/bars/<%=Bars[i].id%>"><img class="barImage" src="<%= Bars[i].img %>"></img></a>
+            <p class="location">Neighborhood: <%=Bars[i].location%></p>
+        </div>
+        <% } %>
+    </div>
+    <footer>
+        <%- include('./partials/footer.ejs') %>  
+    </footer>
+
+</body>
+</html>

@@ -48,6 +48,10 @@ app.use('/bars', barController)
 const users = require('./controller/users.js')
 app.use('/users', users)
 
+const searchController = require('./controller/search.js');
+app.use('/search', searchController);
+
+
 const sessionController = require('./controller/sessions.js');
 app.use('/sessions', sessionController);
 

@@ -43,17 +43,14 @@ bars.post('/', (req, res) => {
 
 })
 
-//search bar route
-bars.post('/search', (req, res) => {
-    chicagoBars.find({name: {$regex: req.body.name, $options: "i"}}, (err, foundBars) => {
-        console.log(req.body.name + " body")
-        console.log(foundBars + " found bars")
-        res.redirect('/')
-        // res.render('search.ejs', {
-        //     Bars: foundBars
-        // })
-    })
-})
+// //search bar route
+// bars.post('/search/results', (req, res) => {
+//     chicagoBars.find({name: {$regex: req.body.name, $options: "i"}}, (err, foundBars) => {
+//         res.render('search.ejs', {
+//             Bars: foundBars
+//         })
+//     })
+// })
 
 // show bar route
 bars.get('/:id', (req, res) => {
@@ -79,7 +76,9 @@ bars.get('/edit/:id', isAuthenticated, (req, res) => {
 
 //Update route
 bars.put('/:id', (req, res) => {
+    console.log('updating')
     chicagoBars.findByIdAndUpdate(req.params.id, req.body, {new: true, useFindAndModify: false}, (error, editedBar) => {
+        console.log(req.body)
         res.redirect('/bars/' + req.params.id)
     })
 })
