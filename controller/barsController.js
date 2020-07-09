@@ -3,22 +3,35 @@ const bars = express.Router()
 const chicagoBars = require('../models/bars.js')
 const neighborhoods = ['Rogers Park', 'West Ridge', 'Uptown', 'Lincoln Square', 'North Center', 'Lake View', 'Lincoln Square', 'Near Noth Side', 'Edison Park', 'Norwood Park', 'Jefferson Park', 'Forest Glen', 'North Park', 'Albany Park', 'Portage Park', 'Irving Park', 'Dunning', 'Montclare', 'Belmont Cragin', 'Hermosa', 'Avondale', 'Logan Square', 'Humboldt Park', 'West Town', 'Austin', 'Near West Side', 'Lower West Side', 'Loop', 'Near South Side', 'Armour Square'];
 
+//authenticator
+
+const isAuthenticated = (req, res, next) => {
+    if (req.session.currentUser) {
+      return next();
+    } else {
+      res.redirect('/sessions/new');
+    }
+}
+
+
 
 // Index route
 bars.get('/', (req, res) => {
     chicagoBars.find({}, (errors, allBars) => {
         res.render('index.ejs', {
-            Bars: allBars
+            Bars: allBars,
+            currentUser: req.session.currentUser
         })
     })
 })
 
 // new Bar route
-bars.get('/new', (req, res) => {
+bars.get('/new', isAuthenticated, (req, res) => {
     chicagoBars.find({}, (errors, allBars) => {
         res.render('newbar.ejs', {
             Bars: allBars,
-            neighborhoods
+            neighborhoods,
+            currentUser: req.session.currentUser
         })
     })
 })
@@ -30,22 +43,36 @@ bars.post('/', (req, res) => {
 
 })
 
+//search bar route
+bars.post('/search', (req, res) => {
+    chicagoBars.find({name: {$regex: req.body.name, $options: "i"}}, (err, foundBars) => {
+        console.log(req.body.name + " body")
+        console.log(foundBars + " found bars")
+        res.redirect('/')
+        // res.render('search.ejs', {
+        //     Bars: foundBars
+        // })
+    })
+})
+
 // show bar route
 bars.get('/:id', (req, res) => {
     chicagoBars.findById(req.params.id, (err, bar) => {
         res.render('showbars.ejs', {
-            bar
+            bar,
+            currentUser: req.session.currentUser
         })
     })
 })
 
 
 // edit bar route
-bars.get('/edit/:id', (req, res) => {
+bars.get('/edit/:id', isAuthenticated, (req, res) => {
     chicagoBars.findById(req.params.id, (err, bar) => {
         res.render('edit.ejs', {
             bar,
-            neighborhoods
+            neighborhoods,
+            currentUser: req.session.currentUser
         })
     })
 })

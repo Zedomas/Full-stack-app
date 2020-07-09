@@ -2,9 +2,11 @@ const express = require('express');
 const methodOverride  = require('method-override');
 const mongoose = require ('mongoose');
 const app = express();
-require('dotenv').config();
+
 const session = require('express-session')
+
 const db = mongoose.connection;
+require('dotenv').config();
 const PORT = process.env.PORT || 3000;
 const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/'+`chicagoBars`;
 
@@ -27,7 +29,6 @@ db.on('open' , ()=>{});
 //Middleware
 //___________________
 
-//use public folder for static assets
 app.use(express.static('Public'));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
@@ -35,7 +36,7 @@ app.use(methodOverride('_method'));
 
 app.use(
     session({
-        secret: "hello", //a random string do not copy this value or your stuff will get hacked
+        secret: process.env.SECRET || "fallback", //a random string do not copy this value or your stuff will get hacked
         resave: false, // default more info: https://www.npmjs.com/package/express-session#resave
         saveUninitialized: false // default  more info: https://www.npmjs.com/package/express-session#resave
       })

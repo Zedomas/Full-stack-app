@@ -1,12 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/main.css">
+    <%- include('./partials/head.ejs') %>
     <title>New Bar</title>
 </head>
 <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <%- include('./partials/nav.ejs') %>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search Feature TBD" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+        </div>
+      </nav>
+    <div class="container">
     <h1>Add a new bar</h1>
     <form action="/bars" method="POST">
         Name: <input type="text" name="name" /><br/>
@@ -30,5 +38,9 @@
         </select><br/>
         <input type="submit" name="" value="Submit"/>
     </form>
+    </div>
+    <footer>
+        <%- include('./partials/footer.ejs') %>
+    </footer>
 </body>
 </html>

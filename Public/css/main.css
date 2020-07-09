@@ -21,3 +21,44 @@ body {
     width: 350px;
     height: 250px;
 }
+
+.container-fluid {
+    background-color: rgba(250, 250, 250, .7);
+}
+
+.container {
+    background-color: rgba(250, 250, 250, .7);
+    margin-top: 8%;
+    margin-bottom: 10%;
+}
+
+.toppicks {
+    color: rgba(250, 250, 250, .7);
+    text-align: center;
+}
+
+.bartitle {
+    text-align: center;
+    color: rgba(5, 5, 5, .7)
+}
+
+.location {
+    text-align: center;
+}
+
+.showimg {
+    width: 250px;
+    height: 250px;
+}
+
+.description {
+    height: 20%;
+}
+
+.remove_button_css { 
+    outline: none;
+    padding: 5px; 
+    border: 0px; 
+    box-sizing: none; 
+    background-color: transparent; 
+  }
