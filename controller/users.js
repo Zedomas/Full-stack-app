@@ -2,7 +2,7 @@ const express = require('express');
 const userRouter = express.Router();
 const bcrypt = require('bcrypt');
 
-const User = require('../models/users.js')
+const Users = require('../models/users.js');
 
 userRouter.get('/new', (req, res) => {
     res.render('users/new.ejs', {
@@ -12,7 +12,10 @@ userRouter.get('/new', (req, res) => {
 
 userRouter.post('/', (req, res) => {
     req.body.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10));
-    User.create(req.body, (err, createdUser) => {
+    // console.log(req.body);
+    Users.create(req.body, (err, createdUser) => {
+        console.log(req.body);
+        console.log(err)
         console.log('user is created', createdUser);
         res.redirect('/bars');
     });
