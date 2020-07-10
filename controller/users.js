@@ -14,9 +14,7 @@ userRouter.post('/', (req, res) => {
     req.body.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10));
     // console.log(req.body);
     Users.create(req.body, (err, createdUser) => {
-        console.log(req.body);
-        console.log(err)
-        console.log('user is created', createdUser);
+        req.session.currentUser = createdUser;
         res.redirect('/bars');
     });
 });
