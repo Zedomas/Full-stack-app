@@ -6,7 +6,8 @@ const barSchema = new mongoose.Schema({
     img: [String],
     specials: {type: String, required: true },
     location: {type: String, required: true },
-    barType: {type: String, required: true}
+    barType: {type: String, required: true},
+    reviews: Array
     }
 );
 

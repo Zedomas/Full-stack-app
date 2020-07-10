@@ -11,12 +11,22 @@ userRouter.get('/new', (req, res) => {
 });
 
 userRouter.post('/', (req, res) => {
-    req.body.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10));
-    // console.log(req.body);
-    Users.create(req.body, (err, createdUser) => {
-        req.session.currentUser = createdUser;
-        res.redirect('/bars');
-    });
+    Users.find({username: req.body.username}, (errors, existingUsers) => {
+        if(existingUsers.length > 0) {
+            res.render('error.ejs', {
+                error: "I'm sorry, that user already exist",
+                currentUser: req.session.currentUser
+            })
+        } else {
+            req.body.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10));
+            // console.log(req.body);
+            Users.create(req.body, (err, createdUser) => {
+                req.session.currentUser = createdUser;
+                res.redirect('/bars');
+            }); 
+        }
+    })
+
 });
 
 module.exports = userRouter;

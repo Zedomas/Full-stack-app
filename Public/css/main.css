@@ -3,6 +3,12 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+    min-height: 100%;
+}
+
+.descript {
+    display: flex;
+    flex-direction: column;
 }
 
 .wrapper {
@@ -10,16 +16,64 @@ body {
     flex-wrap: wrap;
 }
 
+footer {
+    width:100%;
+    margin-top: 415px;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    bottom: 0;
+    
+}
+
+.company {
+    text-align: center;
+    margin-top: 8px;
+    color: grey;
+}
+
+.footerinfo {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    justify-content: center;    
+}
+
+article {
+    margin: 15px;
+    padding-bottom: 15px;
+}
+
+.error {
+    text-align: center;
+    padding: 10px;
+}
+
+.error-link {
+    text-align: center;
+    padding-bottom: 10px;
+    font-weight: 700;
+    font: bold 15px Arial;
+    text-decoration: none;
+    background-color: #423a3a;
+    color: #EEEEEE;
+    padding: 2px 6px 2px 6px;
+    border-top: 1px solid #CCCCCC;
+    border-right: 1px solid #333333;
+    border-bottom: 1px solid #333333;
+    border-left: 1px solid #CCCCCC;
+    margin: 10px;
+}
+
 .barcontainer {
-    width: 350px;
-    height: 3525x;
+    width: 329px;
     background-color: grey;
     margin: 3vh;
 
 }
 .barImage {
-    width: 350px;
-    height: 250px;
+    width: 325px;
+    height: 225px;
+    margin: 0 2px;
 }
 
 .container-fluid {
@@ -27,7 +81,7 @@ body {
 }
 
 .container {
-    background-color: rgba(250, 250, 250, .7);
+    background-color: rgba(250, 250, 250, .8);
     margin-top: 8%;
     margin-bottom: 10%;
 }

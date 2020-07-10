@@ -43,14 +43,6 @@ bars.post('/', (req, res) => {
 
 })
 
-// //search bar route
-// bars.post('/search/results', (req, res) => {
-//     chicagoBars.find({name: {$regex: req.body.name, $options: "i"}}, (err, foundBars) => {
-//         res.render('search.ejs', {
-//             Bars: foundBars
-//         })
-//     })
-// })
 
 // show bar route
 bars.get('/:id', (req, res) => {

@@ -16,17 +16,13 @@
     </div>   
   </nav>   
     
-    <h1 class="toppicks">Top Picks</h1>
-    <div class="wrapper">
-        <% for (let i = 0; i < Bars.length; i++) { %>
-        <div class="barcontainer">
-            <div class="title">
-                <a class="bartitle" href="/bars/<%=Bars[i].id%>"><h3><%= Bars[i].name %></h3></a>   
-            </div>
-                <a href="/bars/<%=Bars[i].id%>"><img class="barImage" src="<%= Bars[i].img %>"></img></a>
-            <p class="location">Neighborhood: <%=Bars[i].location%></p>
+    
+    <div class="container">        
+        <h1 class='error'><%= error%></h1>
+        <div class='error'>
+            <a class="error-link" href="/users/new">Sign Up</a>
+            <a class="error-link" href="/sessions/new">Log in</a>
         </div>
-        <% } %>
     </div>
     <footer>
         <%- include('./partials/footer.ejs') %>  

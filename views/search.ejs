@@ -10,15 +10,16 @@
     <%- include('./partials/nav.ejs') %>
     </ul>
     <form class="form-inline my-2 my-lg-0" action="/search/searching?_method=PUT" method="Post">
-        <input name="name" class="form-control mr-sm-2" type="search" placeholder="Search Feature TBD" aria-label="Search">
+        <input name="name" class="form-control mr-sm-2" type="search" placeholder="Search for a bar" aria-label="Search">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
     </div>
   </nav>
    
-    
+    <% if (Bars.length > 0) { %>
     <h1 class="toppicks">Results</h1>
     <div class="wrapper">
+        
         <% for (let i = 0; i < Bars.length; i++) { %>
         <div class="barcontainer">
             <div class="title">
@@ -29,6 +30,14 @@
         </div>
         <% } %>
     </div>
+    <% } else { %>
+        <div class="container">
+
+            <h1>Sorry no Results</h1>               
+    
+        </div>
+    <% } %>
+
     <footer>
         <%- include('./partials/footer.ejs') %>  
     </footer>
