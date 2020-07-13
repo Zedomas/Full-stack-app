@@ -24,12 +24,10 @@
         <h1><%=bar.name%> <small><%=bar.location%></small></h1>
         <div class="row">
             <img class="img-fluid col-lg-8" src="<%=bar.img%>"> 
-            <div class="row description col-lg-4">
-                <div>
+            <div class="row description col-lg-4 descript">
+                <div >
                    <h4><u>Description</u></h4> 
-                </div>
-                
-            </br>
+                </div>                
                 <p><%=bar.description %></p> 
             </div> 
         </div>      
@@ -41,10 +39,31 @@
             
             <p><%= bar.specials %></p>
         </div> 
-        
-    <% if (currentUser) { %>
-        <div> Test </div>
-    <% } %>
+        <div>
+            <h3><u>Reviews</u></h3>
+            <div>
+                <a href="<%= bar.id %>/review">Add a review</a>
+            </div>
+        <% if (bar.reviews.length == 0) { %>
+            <p>No current reviews available</p>
+        <% } else { %>
+                <% for (let i = 0; i < bar.reviews.length; i++) {   %> 
+                    <div class="review">
+                    <h5>Submitted user: <%= bar.reviews[i].username %> <small>Rated <%= bar.reviews[i].rating%>/5</small></h5>  
+                    <p><%= bar.reviews[i].body %></p>                    
+                    <% if (currentUser) { %>
+                        <% if (currentUser.username == bar.reviews[i].username) { %>
+                            <form action="/bars/reviews/<%=bar.id%>/<%=[i]%>?_method=PUT" method="POST">
+                            <input type="submit" value ="Delete" name="delete">
+                            </form>
+                        <% } %>  
+                    <% } %>                    
+                    </div>              
+                <% } %>  
+        <% } %> 
+        </div>
+    
+
     </div>   
     <footer>
         <%- include('./partials/footer.ejs') %>

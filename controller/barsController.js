@@ -54,6 +54,53 @@ bars.get('/:id', (req, res) => {
     })
 })
 
+// write review bar route
+bars.get('/:id/review', (req, res) => {
+    chicagoBars.findById(req.params.id, (err, bar) => {
+        res.render('review.ejs', {
+            bar,
+            currentUser: req.session.currentUser
+        })
+    })
+})
+
+// write review bar route
+bars.put('/review/:id', (req, res) => {
+    chicagoBars.findById(req.params.id, (err, bar) => {
+        
+        if (req.body.star1 == 'on') {
+            rating = 1
+        } else if (req.body.star2 == 'on') {
+            rating = 2
+        } else if (req.body.star3 == 'on') {
+            rating = 3
+        } else if (req.body.star4 == 'on') {
+            rating = 4
+        } else if (req.body.star5 == 'on') {
+            rating = 5
+        }
+    
+        let newReview = {
+            username: req.body.user,
+            body: req.body.review,
+            rating
+        }
+        oldReview = bar.reviews
+
+        oldReview.push(newReview)
+        console.log(oldReview)
+        chicagoBars.findByIdAndUpdate(req.params.id, {reviews: oldReview}, {new: true, useFindAndModify: false}, (error, reviewedBar) => {
+            console.log(reviewedBar)
+            res.redirect('/bars/' + req.params.id)
+        })
+    })    
+})
+
+// remove review route
+
+// bars.put('/reviews/:id/:index', (req, res) => {
+
+// })
 
 // edit bar route
 bars.get('/edit/:id', isAuthenticated, (req, res) => {
