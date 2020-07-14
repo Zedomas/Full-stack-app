@@ -98,9 +98,20 @@ bars.put('/review/:id', (req, res) => {
 
 // remove review route
 
-// bars.put('/reviews/:id/:index', (req, res) => {
-
-// })
+bars.put('/reviews/:id/:index', (req, res) => {
+    chicagoBars.findById(req.params.id, (err, bar) => {
+        
+        let newReview = []
+        for (let i = 0; i < bar.reviews.length; i++) {
+            if (i != req.params.index) {
+                newReview.push(bar.reviews[i])
+            }
+        }
+        chicagoBars.findByIdAndUpdate(req.params.id, {reviews: newReview}, {new: true, useFindAndModify: false}, (error, reviewedBar) => {
+            res.redirect('/bars/' + req.params.id)
+        })
+    })    
+})
 
 // edit bar route
 bars.get('/edit/:id', isAuthenticated, (req, res) => {
